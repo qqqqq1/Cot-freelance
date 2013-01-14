@@ -485,18 +485,14 @@ switch ($a)
 	
 	if (!empty($rnewpass1) && !empty($rnewpass2) && !empty($roldpass))
 	{
-		$roldpass = sed_import('roldpass','P','PSW');
-		$roldpass = md5($roldpass);
+		$roldpass = sed_hash($roldpass, $urr['user_passsalt'], $urr['user_passfunc']);
 
 		$rnewpass1 = sed_import('rnewpass1','P','PSW');
 		$rnewpass2 = sed_import('rnewpass2','P','PSW');
 
-		$sql = sed_sql_query("SELECT user_password FROM $db_users WHERE user_id='".$urr['user_id']."' ");
-		$row = sed_sql_fetcharray($sql);
-
 		$error_string .= ($rnewpass1!=$rnewpass2) ? $L['pro_passdiffer']."<br />" : '';
-		$error_string .= (mb_strlen($rnewpass1)<6 || sed_alphaonly($rnewpass1)!=$rnewpass2) ? $L['pro_passtoshort']."<br />" : '';
-		$error_string .= ($roldpass!=$row['user_password']) ? $L['pro_wrongpass']."<br />" : '';
+		$error_string .= (mb_strlen($rnewpass1)<4 || sed_alphaonly($rnewpass1)!=$rnewpass2) ? $L['pro_passtoshort']."<br />" : '';
+		$error_string .= ($roldpass!=$urr['user_password']) ? $L['pro_wrongpass']."<br />" : '';
 
 		if (!empty($ruseremail) && !empty($rmailpass) && $cfg['useremailchange'] && $ruseremail != $urr['user_email'])
 		{
@@ -505,9 +501,12 @@ switch ($a)
 
 		if (empty($error_string))
 		{
-			$rnewpass = md5($rnewpass1);
+			$ruserpass = array();
+			$ruserpass['user_passsalt'] = sed_unique(16);
+			$ruserpass['user_passfunc'] = empty($cfg['hashfunc']) ? 'sha256' : $cfg['hashfunc'];
+			$ruserpass['user_password'] = sed_hash($rnewpass1, $ruserpass['user_passsalt'], $ruserpass['user_passfunc']);
 
-			sed_sql_query("UPDATE $db_users SET user_password='$rnewpass' WHERE user_id={$urr['user_id']}");
+			sed_sql_update($db_users, "user_id={$usr['id']}", $ruserpass);
 		}
 	}
 
@@ -531,11 +530,11 @@ switch ($a)
 
 		if (!$cfg['user_email_noprotection'])
 		{
-			$rmailpass = md5($rmailpass);
+			$rmailpass = sed_hash($rmailpass, $urr['user_passsalt'], $urr['user_passfunc']);
 			$error_string .= ($rmailpass!=$urr['user_password']) ? $L['pro_wrongpass']."<br />" : '';
 		}
-
-		$error_string .= (mb_strlen($ruseremail)<4 || !preg_match('#^[\w\p{L}][\.\w\p{L}\-]+@[\w\p{L}\.\-]+\.[\w\p{L}]+$#u', $ruseremail)) ? $L['aut_emailtooshort']."<br />" : '';
+		
+		$error_string .= (mb_strlen($ruseremail)<4 || !preg_match('#^[\w\p{L}][\.\w\p{L}\-]*@[\w\p{L}\.\-]+\.[\w\p{L}]+$#u', $ruseremail)) ? $L['aut_emailtooshort']."<br />" : '';
 		$error_string .= ($res>0) ? $L['aut_emailalreadyindb']."<br />" : '';
 
 		if (empty($error_string))
@@ -544,11 +543,11 @@ switch ($a)
 			if (!$cfg['user_email_noprotection'])
 			{
 				$validationkey = md5(microtime());
-				$sql = sed_sql_query("UPDATE $db_users SET user_lostpass='$validationkey', user_email='".sed_sql_prep($ruseremail)."', user_maingrp='-1', user_sid='".sed_sql_prep($urr['user_maingrp'])."' WHERE user_id='".$urr['user_id']."' ");
+				$sql = sed_sql_query("UPDATE $db_users SET user_lostpass='$validationkey', user_email='".sed_sql_prep($ruseremail)."', user_maingrp='-1', user_sid='".sed_sql_prep($urr['user_maingrp'])."' WHERE user_id='".$usr['id']."' ");
 
 				$rsubject = $cfg['maintitle']." - ".$L['aut_mailnoticetitle'];
 				$ractivate = $cfg['mainurl'].'/'.sed_url('users', 'm=register&a=validate&v='.$validationkey, '', true);
-				$rbody = sprintf($L['aut_emailchange'], $urr['user_name'], $ractivate);
+				$rbody = sprintf($L['aut_emailchange'], $usr['name'], $ractivate);
 				$rbody .= "\n\n".$L['aut_contactadmin'];
 				sed_mail ($ruseremail, $rsubject, $rbody);
 
@@ -570,7 +569,7 @@ switch ($a)
 			}
 			else
 			{
-				$sql = sed_sql_query("UPDATE $db_users SET user_email='".sed_sql_prep($ruseremail)."' WHERE user_id=".$urr['user_id']);
+				$sql = sed_sql_query("UPDATE $db_users SET user_email='".sed_sql_prep($ruseremail)."' WHERE user_id=".$usr['id']);
 			}
 		}
 	}

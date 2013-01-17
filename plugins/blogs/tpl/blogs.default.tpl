@@ -4,7 +4,7 @@
 <h1 class="mboxHD">
 <!-- IF {PHP.usr.id} > 0 -->
 	<div style="float:right; font-size:14px;">
-		<a href="blogs/?m=add">{PHP.skinlang.blogs.add}</a>
+		<a href="{PHP|sed_url('plug', 'e=blogs&m=add')}">{PHP.skinlang.blogs.add}</a>
 	</div>
 <!-- ENDIF -->
 	{PHP.skinlang.blogs.blogs} {CATTITLE}

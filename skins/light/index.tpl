@@ -15,28 +15,28 @@
 		<li>	
 			<div class="ava"><img src="datas/defaultav/blank.png" alt="" /></div>
 			<div class="info">
-				<div class="name"><noindex><a rel="nofollow" href="balance/">{PHP.skinlang.index.free_place}</a></noindex></div>
+				<div class="name"><noindex><a rel="nofollow" href="{PHP|sed_url('plug','e=balance')}">{PHP.skinlang.index.free_place}</a></noindex></div>
 				<div class="cat">{PHP.skinlang.index.place_for_ads}</div>
 			</div>	
 		</li>
 		<li>
 			<div class="ava"><img src="datas/defaultav/blank.png" alt="" /></div>
 			<div class="info">
-				<div class="name"><noindex><a rel="nofollow" href="balance/">{PHP.skinlang.index.free_place}</a></noindex></div>
+				<div class="name"><noindex><a rel="nofollow" href="{PHP|sed_url('plug','e=balance')}">{PHP.skinlang.index.free_place}</a></noindex></div>
 				<div class="cat">{PHP.skinlang.index.place_for_ads}</div>
 			</div>	
 		</li>
 		<li>
 			<div class="ava"><img src="datas/defaultav/blank.png" alt="" /></div>
 			<div class="info">
-				<div class="name"><noindex><a rel="nofollow" href="balance/">{PHP.skinlang.index.free_place}</a></noindex></div>
+				<div class="name"><noindex><a rel="nofollow" href="{PHP|sed_url('plug','e=balance')}">{PHP.skinlang.index.free_place}</a></noindex></div>
 				<div class="cat">{PHP.skinlang.index.place_for_ads}</div>
 			</div>	
 		</li>
 		<li>
 			<div class="ava"><img src="datas/defaultav/blank.png" alt="" /></div>
 			<div class="info">
-				<div class="name"><noindex><a rel="nofollow" href="balance/">{PHP.skinlang.index.free_place}</a></noindex></div>
+				<div class="name"><noindex><a rel="nofollow" href="{PHP|sed_url('plug','e=balance')}">{PHP.skinlang.index.free_place}</a></noindex></div>
 				<div class="cat">{PHP.skinlang.index.place_for_ads}</div>
 			</div>	
 		</li>
@@ -75,7 +75,7 @@
 	<div id="tmenu">
 		
 		<div style="float:right; font-size:14px; margin-top:5px;">
-			<noindex><a rel="nofollow" href="projects/add/" title="{PHP.skinlang.projects.add}">{PHP.skinlang.projects.add}</a></noindex>
+			<noindex><a rel="nofollow" href="{PHP|sed_url('plug', 'e=projects&m=add')}" title="{PHP.skinlang.projects.add}">{PHP.skinlang.projects.add}</a></noindex>
 		</div>
 		
 		<ul class="tabs">
@@ -132,7 +132,7 @@
 		</div>
 	<!-- END: PRJ_ROWS -->
 	</div>
-	<div class="paging"><a href="projects/">{PHP.skinlang.projects.view_all}</a></div>
+	<div class="paging"><a href="{PHP|sed_url('plug', 'e=projects')}">{PHP.skinlang.projects.view_all}</a></div>
 	<!-- END: PROJECTS -->
 </div>
 

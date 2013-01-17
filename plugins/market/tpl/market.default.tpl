@@ -9,7 +9,7 @@
 	<div class="rSide">
 		
 		<div style="float:right; font-size:14px; margin-bottom:-10px;">
-			<noindex><a rel="nofollow" href="shop/add/" title="Добавить товар">{PHP.skinlang.market.add}</a></noindex>
+			<noindex><a rel="nofollow" href="{PHP|sed_url('plug', 'e=market&m=add')}" title="Добавить товар">{PHP.skinlang.market.add}</a></noindex>
 		</div>
 			
 		<h1 class="mboxHD">{CATTITLE}</h1>

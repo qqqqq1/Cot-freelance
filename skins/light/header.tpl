@@ -31,10 +31,10 @@
 			<div id="userBar">
 				 <!-- BEGIN: GUEST -->
 				 {FB_LOGIN}
-				<a href="auth/">{PHP.L.Login}</a>&nbsp;&#8226;&nbsp;<a href="register/">{PHP.L.Register}</a>
+				<a href="{PHP|sed_url('users', 'm=auth')}">{PHP.L.Login}</a>&nbsp;&#8226;&nbsp;<a href="{PHP|sed_url('users', 'm=register')}">{PHP.L.Register}</a>
 				<!-- END: GUEST -->
 				<!-- BEGIN: USER -->
-				<a href="users/{HEADER_USER_NAME}">{HEADER_USER_NAME}</a> | <a href="{BALANCE_URL}">Мой счет {BALANCE_SUMM} руб.</a><br>{HEADER_USER_PMREMINDER}
+				{HEADER_USER_NAME} | <a href="{BALANCE_URL}">Мой счет {BALANCE_SUMM} руб.</a><br>{HEADER_USER_PMREMINDER}
 				{HEADER_NOTICES}<br>{HEADER_USER_ADMINPANEL} <!-- IF {FB_LOGOUT} -->{FB_LOGOUT}<!-- ELSE -->{HEADER_USER_LOGINOUT}<!-- ENDIF -->
 				
 				<!-- END: USER -->
@@ -49,29 +49,29 @@
 		<div id="nav">
 			<ul>
 				<!-- IF {PHP.e} == "projects" -->
-				<li class="act"><a href="projects/">{PHP.skinlang.menu.projects}</a></li>
+				<li class="act"><a href="{PHP|sed_url('plug', 'e=projects')}">{PHP.skinlang.menu.projects}</a></li>
 				<!-- ELSE -->
-				<li><a href="projects/">{PHP.skinlang.menu.projects}</a></li>
+				<li><a href="{PHP|sed_url('plug', 'e=projects')}">{PHP.skinlang.menu.projects}</a></li>
 				<!-- ENDIF -->
 				<!-- IF {PHP.gm} == "4" AND {PHP.z} == "users" OR {PHP.urr.user_maingrp} == 4 -->
-				<li class="act"><a href="freelancers/">{PHP.skinlang.menu.freelancers}</a></li>
+				<li class="act"><a href="{PHP|sed_url('users', 'gm=4')}">{PHP.skinlang.menu.freelancers}</a></li>
 				<!-- ELSE -->
-				<li><a href="freelancers/">{PHP.skinlang.menu.freelancers}</a></li>
+				<li><a href="{PHP|sed_url('users', 'gm=4')}">{PHP.skinlang.menu.freelancers}</a></li>
 				<!-- ENDIF -->
 				<!-- IF {PHP.gm} == "8" AND {PHP.z} == "users" OR {PHP.urr.user_maingrp} == 8 -->
-				<li class="act"><a href="employers/">{PHP.skinlang.menu.employers}</a></li>
+				<li class="act"><a href="{PHP|sed_url('users', 'gm=8')}">{PHP.skinlang.menu.employers}</a></li>
 				<!-- ELSE -->
-				<li><a href="employers/">{PHP.skinlang.menu.employers}</a></li>
+				<li><a href="{PHP|sed_url('users', 'gm=8')}">{PHP.skinlang.menu.employers}</a></li>
 				<!-- ENDIF -->
 				<!-- IF {PHP.e} == "market" -->
-				<li class="act"><a href="shop/">{PHP.skinlang.menu.shop}</a></li>
+				<li class="act"><a href="{PHP|sed_url('plug', 'e=market')}">{PHP.skinlang.menu.shop}</a></li>
 				<!-- ELSE -->
-				<li><a href="shop/">{PHP.skinlang.menu.shop}</a></li>
+				<li><a href="{PHP|sed_url('plug', 'e=market')}">{PHP.skinlang.menu.shop}</a></li>
 				<!-- ENDIF -->
 				<!-- IF {PHP.e} == "blogs" -->
-				<li class="act"><a href="blogs/">{PHP.skinlang.menu.blogs}</a></li>
+				<li class="act"><a href="{PHP|sed_url('plug', 'e=blogs')}">{PHP.skinlang.menu.blogs}</a></li>
 				<!-- ELSE -->
-				<li><a href="blogs/">{PHP.skinlang.menu.blogs}</a></li>
+				<li><a href="{PHP|sed_url('plug', 'e=blogs')}">{PHP.skinlang.menu.blogs}</a></li>
 				<!-- ENDIF -->
 				<!-- IF {PHP.z} == "forums" -->
 				<li class="act"><a href="forums.php">{PHP.skinlang.menu.forums}</a></li>
@@ -79,9 +79,9 @@
 				<li><a href="forums.php">{PHP.skinlang.menu.forums}</a></li>
 				<!-- ENDIF -->
 				<!-- IF {PHP.c} == "articles" -->
-				<li class="act"><a href="articles/">{PHP.skinlang.menu.articles}</a></li>
+				<li class="act"><a href="{PHP|sed_url('list', 'c=articles')}">{PHP.skinlang.menu.articles}</a></li>
 				<!-- ELSE -->
-				<li><a href="articles/">{PHP.skinlang.menu.articles}</a></li>
+				<li><a href="{PHP|sed_url('list', 'c=articles')}">{PHP.skinlang.menu.articles}</a></li>
 				<!-- ENDIF -->
 			</ul>
 		</div>

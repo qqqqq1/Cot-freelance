@@ -8,7 +8,7 @@
 				Работает на <a href="http://cotonti.com" target="blank">CMF Cotonti</a>
 			</div>
 			&copy; 2012 Фриланс-биржа<br />
-			<a href="agreement.html">Пользовательское соглашение</a> &nbsp; <a href="help/">Помощь</a> &nbsp; <a href="contacts.html">Контакты</a><br /><br />
+			<a href="{PHP|sed_url('page','al=agreement')}">Пользовательское соглашение</a> &nbsp; <a href="{PHP|sed_url('list','c=help')}">Помощь</a> &nbsp; <a href="{PHP|sed_url('page','al=contacts')}">Контакты</a><br /><br />
 			{FOOTER_CREATIONTIME} {FOOTER_SQLSTATISTICS} {FOOTER_DEVMODE}
 		</div>
 	</div>

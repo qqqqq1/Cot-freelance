@@ -34,7 +34,7 @@
 				<a href="{PHP|sed_url('users', 'm=auth')}">{PHP.L.Login}</a>&nbsp;&#8226;&nbsp;<a href="{PHP|sed_url('users', 'm=register')}">{PHP.L.Register}</a>
 				<!-- END: GUEST -->
 				<!-- BEGIN: USER -->
-				{HEADER_USER_NAME} | <a href="{BALANCE_URL}">Мой счет {BALANCE_SUMM} руб.</a><br>{HEADER_USER_PMREMINDER}
+				<a href="{PHP.usr.id|sed_url('users', 'm=details&id='$this)}">{HEADER_USER_NAME}</a> | <a href="{BALANCE_URL}">Мой счет {BALANCE_SUMM} руб.</a><br>{HEADER_USER_PMREMINDER}
 				{HEADER_NOTICES}<br>{HEADER_USER_ADMINPANEL} <!-- IF {FB_LOGOUT} -->{FB_LOGOUT}<!-- ELSE -->{HEADER_USER_LOGINOUT}<!-- ENDIF -->
 				
 				<!-- END: USER -->

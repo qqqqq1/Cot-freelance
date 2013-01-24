@@ -1,0 +1,8 @@
+# Rewrite engine options
+Options -Indexes
+RewriteEngine On
+
+# For robokass
+RewriteRule ^balance/robox/result$ plug.php?r=balance&a=result [QSA,NC,NE,L]
+RewriteRule ^balance/robox/success$ plug.php?e=balance&m=bill&a=success [QSA,NC,NE,L]
+RewriteRule ^balance/robox/fail$ plug.php?e=balance&m=bill&a=fail [QSA,NC,NE,L]

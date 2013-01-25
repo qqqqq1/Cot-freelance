@@ -44,9 +44,9 @@
 
 2.2. Заполните ссылки (измените адрес сайта на свой):
 
-Result URL: http://vashsite.ru/balance/bill/result
-Success URL: http://vashsite.ru/balance/bill/success
-Fail URL: http://vashsite.ru/balance/bill/fail
+Result URL: http://vashsite.ru/balance/robox/result
+Success URL: http://vashsite.ru/balance/robox/success
+Fail URL: http://vashsite.ru/balance/robox/fail
 
 Везде Метод отсылки данных: GET
 

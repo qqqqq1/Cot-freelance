@@ -50,6 +50,16 @@ Fail URL: http://vashsite.ru/balance/robox/fail
 
 Везде Метод отсылки данных: GET
 
+2.3. В .htaccess должны быть прописаны соответствующие правила для работы этих трех ссылок:
+
+# Rewrite engine options
+Options -Indexes
+RewriteEngine On
+
+# For robokass
+RewriteRule ^balance/robox/result$ plug.php?r=balance&a=result [QSA,NC,NE,L]
+RewriteRule ^balance/robox/success$ plug.php?e=balance&m=bill&a=success [QSA,NC,NE,L]
+RewriteRule ^balance/robox/fail$ plug.php?e=balance&m=bill&a=fail [QSA,NC,NE,L]
 
 3. Заходим в админку сайта в раздел настройки Робокассы:
 

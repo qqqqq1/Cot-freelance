@@ -1,6 +1,13 @@
 <!-- BEGIN: MAIN -->
 
-<div id="bread"><a href="/">{PHP.skinlang.Home}</a> > <a href="shop/">{PHP.skinlang.market.market}</a></div>
+<div id="bread"><a href="/">{PHP.skinlang.Home}</a> > 
+	<!-- IF {PHP.c} -->
+	<a href="{PHP|sed_url('plug', 'e=market')}">{PHP.skinlang.market.market}</a>
+	<!-- ELSE -->
+	{PHP.skinlang.market.market}
+	<!-- ENDIF -->
+</div>
+
 <div class="mboxBody">
 	<div class="lSide">
 		<div class="mboxHD">{PHP.skinlang.market.catalog}</div>

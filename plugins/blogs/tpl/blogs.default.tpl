@@ -1,6 +1,13 @@
 <!-- BEGIN: MAIN -->
 
-<div id="bread"><a href="/">{PHP.skinlang.Home}</a> > <a href="blogs">{PHP.skinlang.blogs.blogs}</a></div>
+<div id="bread"><a href="/">{PHP.skinlang.Home}</a> > 
+	<!-- IF {PHP.c} -->
+	<a href="{PHP|sed_url('plug', 'e=blogs')}">{PHP.skinlang.blogs.blogs}</a>
+	<!-- ELSE -->
+	{PHP.skinlang.blogs.blogs}
+	<!-- ENDIF -->
+</div>
+
 <h1 class="mboxHD">
 <!-- IF {PHP.usr.id} > 0 -->
 	<div style="float:right; font-size:14px;">

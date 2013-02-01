@@ -94,7 +94,7 @@
 		<!-- IF {PHP.usr.id} == {PHP.urr.user_id} OR {PHP.usr.isadmin} -->
 		<div style="float:right;">
 			<a class="button_editprofile" href="{USERS_DETAILS_PROFILE_INFO_URL}">{PHP.skinlang.users.details.editinfo}</a><br/>
-			<a class="button_editprofile" href="balance/">{PHP.skinlang.users.details.uslugi}</a><br/><br/>
+			<a class="button_editprofile" href="{PHP|sed_url('plug', 'e=balance')}">{PHP.skinlang.users.details.uslugi}</a><br/><br/>
 		</div>
 		<!-- ENDIF -->
 		<div id="umenu">

@@ -1,6 +1,13 @@
 <!-- BEGIN: MAIN -->
 
-<div id="bread"><a href="/">{PHP.skinlang.Home}</a> > <a href="projects/">{PHP.skinlang.projects.projects}</a></div>
+<div id="bread"><a href="/">{PHP.skinlang.Home}</a> > 
+	<!-- IF {PHP.c} -->
+	<a href="{PHP|sed_url('plug', 'e=projects')}">{PHP.skinlang.projects.projects}</a>
+	<!-- ELSE -->
+	{PHP.skinlang.projects.projects}
+	<!-- ENDIF -->
+</div>
+
 <h1 class="mboxHD">{PHP.skinlang.projects.projects} <!-- IF {CATTITLE} -->/ {CATTITLE}<!-- ENDIF --></h1>
 <div class="mboxBody">
 	<div class="lSide">
